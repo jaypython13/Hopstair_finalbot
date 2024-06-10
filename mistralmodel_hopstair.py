@@ -68,7 +68,7 @@ def get_answer(query):
                              filename=model_file_name,
                             repo_type="model")
 
-  llm = LlamaCpp(
+  LLMChain = LlamaCpp(
           model_path=model_path,
           temperature=0,
           max_tokens=256,
@@ -94,7 +94,7 @@ def get_answer(query):
   usr_pt = PromptTemplate(template="{context}\n{question}\n", input_variables=["context", "question"])
   usr_msg_pt = HumanMessagePromptTemplate(prompt=usr_pt)
   prompt = ChatPromptTemplate.from_messages([sys_msg_pt, usr_msg_pt])  
-  chain= load_qa_chain(llm, chain_type="stuff", prompt=prompt)
+  chain= load_qa_chain(LLMChain, chain_type="stuff", prompt=prompt)
   answer = chain.run(input_documents = similar_docs, question = query, prompt=prompt)
   avoid_words(answer)
   return answer
