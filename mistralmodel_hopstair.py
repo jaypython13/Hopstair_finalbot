@@ -26,7 +26,7 @@ from langchain.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import Chroma
 import os
 import tempfile
-global text, documents, index, docs
+global text, documents, index, docs, vectorstore
 
 __import__('pysqlite3')
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
