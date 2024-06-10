@@ -59,6 +59,8 @@ def get_answer(query):
   return answer
 
 def get_similar_docs(query,k=1,score=False):
+    loader = PyPDFLoader("data/Hopstair_data.pdf")
+    documents = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
     docs = text_splitter.split_documents(documents=documents) 
     # Create Embeddings 
@@ -88,8 +90,6 @@ def main():
     st.image('hs-logo.png', width = 200)
     st.title("AI Buddy- Your Confidence Catalyst")
     #st.sidebar.title("Hopstair's library data is Processing")
-    loader = PyPDFLoader("data/Hopstair_data.pdf")
-    documents = loader.load()
     name =  st.text_input("Hope you are well ! Please type your name to begin. ")
     if name:
         greet_user(name)
@@ -100,11 +100,11 @@ def main():
         response = get_answer(query)
         st.text_area(response, height =100)
     # Split the data into chunks
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
-    docs = text_splitter.split_documents(documents=documents) 
+    #text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
+    #docs = text_splitter.split_documents(documents=documents) 
     # Create Embeddings 
-    os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
-    embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+    #os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
+    #embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
     # load it into Chroma
     #vectorstore = Chroma.from_documents(docs, embeddings)
     # Configure and initialize components
