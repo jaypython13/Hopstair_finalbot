@@ -88,8 +88,9 @@ def main():
     if name:
         greet_user(name)
     query = st.text_input("Type your query here:")
-
-    
+    if query == "quit":
+        st.write("Goodbye! Have a great day! Take care, my dear friend. Wishing you all the happiness and success in the world 💪")
+        break
     # Split the data into chunks
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
     text_chunks = text_splitter.split_documents(documents=documents) 
@@ -105,8 +106,8 @@ def main():
     if query:
         response = get_answer(query)
         st.text_area(response, height =100)
-    if query.lower() == "quit":
-        st.write("Goodbye! Have a great day! Take care, my dear friend. Wishing you all the happiness and success in the world 💪")
+    #if query.lower() == "quit":
+        #st.write("Goodbye! Have a great day! Take care, my dear friend. Wishing you all the happiness and success in the world 💪")
         
         #break
 
