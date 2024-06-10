@@ -58,8 +58,13 @@ def get_answer(query):
   avoid_words(answer)
   return answer
 
-def get_similar_docs(query,k=1,score=False, docs, embeddings):
-   vectorstore = Chroma.from_documents(docs, embeddings)
+def get_similar_docs(query,k=1,score=False):
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
+    docs = text_splitter.split_documents(documents=documents) 
+    # Create Embeddings 
+    os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
+    embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+    vectorstore = Chroma.from_documents(docs, embeddings)
   if score:
     similar_docs = vectorstore.similarity_search_with_score(query,k=k)
   else:
