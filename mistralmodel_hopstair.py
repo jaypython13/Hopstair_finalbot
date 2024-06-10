@@ -53,6 +53,7 @@ def avoid_words(answer):
 
 def get_answer(query):
   similar_docs = get_similar_docs(query)
+  llm = configure_llama_model()   
   chain= load_qa_chain(llm, chain_type="stuff", prompt=prompt)
   answer = chain.run(input_documents = similar_docs, question = query, prompt=prompt)
   avoid_words(answer)
@@ -89,6 +90,7 @@ def configure_llama_model():
 def main():
     st.image('hs-logo.png', width = 200)
     st.title("AI Buddy- Your Confidence Catalyst")
+       
     #st.sidebar.title("Hopstair's library data is Processing")
     name =  st.text_input("Hope you are well ! Please type your name to begin. ")
     if name:
@@ -99,16 +101,7 @@ def main():
     else:
         response = get_answer(query)
         st.text_area(response, height =100)
-    # Split the data into chunks
-    #text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
-    #docs = text_splitter.split_documents(documents=documents) 
-    # Create Embeddings 
-    #os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
-    #embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
-    # load it into Chroma
-    #vectorstore = Chroma.from_documents(docs, embeddings)
-    # Configure and initialize components
-    llm = configure_llama_model()    
+    
 
     
     #if query:
