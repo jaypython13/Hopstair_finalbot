@@ -85,7 +85,8 @@ def main():
     loader = PyPDFLoader("data/Hopstair_data.pdf")
     documents = loader.load()
     name =  st.text_input("Hope you are well ! Please type your name to begin. ")
-    greet_user(name)
+    if name:
+        greet_user(name)
     query = st.text_input("Type your query here:")
 
     
