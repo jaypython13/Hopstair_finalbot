@@ -58,7 +58,8 @@ def get_answer(query):
   avoid_words(answer)
   return answer
 
-def get_similar_docs(query,k=1,score=False):
+def get_similar_docs(query,k=1,score=False, docs, embeddings):
+   vectorstore = Chroma.from_documents(docs, embeddings)
   if score:
     similar_docs = vectorstore.similarity_search_with_score(query,k=k)
   else:
