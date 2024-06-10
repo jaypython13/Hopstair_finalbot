@@ -64,11 +64,9 @@ def get_answer(query):
   (repo_id, model_file_name) = ("TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
                                   "mistral-7b-instruct-v0.1.Q4_0.gguf")
 
-  model_path = hf_hub_download(repo_id=repo_id,
-                             filename=model_file_name,
-                            repo_type="model")
+  model_path = hf_hub_download(repo_id=repo_id, filename=model_file_name, repo_type="model")
 
-  LLMChain = LlamaCpp(
+  llm = LlamaCpp(
           model_path=model_path,
           temperature=0,
           max_tokens=256,
@@ -94,7 +92,8 @@ def get_answer(query):
   usr_pt = PromptTemplate(template="{context}\n{question}\n", input_variables=["context", "question"])
   usr_msg_pt = HumanMessagePromptTemplate(prompt=usr_pt)
   prompt = ChatPromptTemplate.from_messages([sys_msg_pt, usr_msg_pt])  
-  chain= load_qa_chain(LLMChain, chain_type="stuff", prompt=prompt)
+    
+  chain= load_qa_chain(llm, chain_type="stuff", prompt=prompt)
   answer = chain.run(input_documents = similar_docs, question = query, prompt=prompt)
   avoid_words(answer)
   return answer
