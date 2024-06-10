@@ -37,10 +37,10 @@ from langchain.schema import BaseOutputParser
 from langchain.chains.base import Chain
 from huggingface_hub import hf_hub_download
 from langchain.llms import LlamaCpp
-from llama_index.llms.llama_cpp.llama_utils import (
-    messages_to_prompt,
-    completion_to_prompt,
-)
+#from llama_index.llms.llama_cpp.llama_utils import (
+    #messages_to_prompt,
+    #completion_to_prompt,
+#)
 
 __import__('pysqlite3')
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
@@ -81,8 +81,8 @@ def get_answer(query):
           n_gpu_layers=1,
           n_batch=256,
           n_ctx=4098,
-          messages_to_prompt=messages_to_prompt,
-          completion_to_prompt=completion_to_prompt,
+          #messages_to_prompt=messages_to_prompt,
+          #completion_to_prompt=completion_to_prompt,
           stop=["[INST]"],
           verbose=True,
           streaming=True,
