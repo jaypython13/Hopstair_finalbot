@@ -79,7 +79,7 @@ def configure_llama_model():
     )
     return llm
 def main():
-    st.image('hs-logo.png')
+    st.image('hs-logo.png', width = 200)
     st.title("AI Buddy- Your Confidence Catalyst")
     #st.sidebar.title("Hopstair's library data is Processing")
     loader = PyPDFLoader("data/Hopstair_data.pdf")
