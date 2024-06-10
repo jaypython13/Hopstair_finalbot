@@ -65,11 +65,11 @@ def get_similar_docs(query,k=1,score=False):
     os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
     embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
     vectorstore = Chroma.from_documents(docs, embeddings)
-  if score:
-    similar_docs = vectorstore.similarity_search_with_score(query,k=k)
-  else:
-    similar_docs = vectorstore.similarity_search(query,k=k)
-  return similar_docs
+    if score:
+        similar_docs = vectorstore.similarity_search_with_score(query,k=k)
+    else:
+        similar_docs = vectorstore.similarity_search(query,k=k)
+   return similar_docs
     
 def configure_llama_model():
     model_url = 'https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q4_K_M.gguf'
