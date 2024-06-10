@@ -60,9 +60,9 @@ def get_answer(query):
 
 def get_similar_docs(query,k=1,score=False):
   if score:
-    similar_docs = index.similarity_search_with_score(query,k=k)
+    similar_docs = vectorstore.similarity_search_with_score(query,k=k)
   else:
-    similar_docs = index.similarity_search(query,k=k)
+    similar_docs = vectorstore.similarity_search(query,k=k)
   return similar_docs
     
 def configure_llama_model():
@@ -100,7 +100,7 @@ def main():
     os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
     embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
     # load it into Chroma
-    index = Chroma.from_documents(docs, embeddings)
+    vectorstore = Chroma.from_documents(docs, embeddings)
     # Configure and initialize components
     llm = configure_llama_model()    
 
