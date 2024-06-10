@@ -26,7 +26,7 @@ from langchain.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import Chroma
 import os
 import tempfile
-global text, documents, index
+global text, documents, index, docs
 
 __import__('pysqlite3')
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
@@ -58,7 +58,7 @@ def get_answer(query):
   avoid_words(answer)
   return answer
 
-def get_similar_docs(query,k=1,score=False,index):
+def get_similar_docs(query,k=1,score=False):
   if score:
     similar_docs = index.similarity_search_with_score(query,k=k)
   else:
@@ -95,12 +95,12 @@ def main():
         st.text_area(response, height =100)
     # Split the data into chunks
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
-    text_chunks = text_splitter.split_documents(documents=documents) 
+    docs = text_splitter.split_documents(documents=documents) 
     # Create Embeddings 
     os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
     embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
     # load it into Chroma
-    index = Chroma.from_documents(text_chunks, embeddings)
+    index = Chroma.from_documents(docs, embeddings)
     # Configure and initialize components
     llm = configure_llama_model()    
 
