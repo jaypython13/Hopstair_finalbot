@@ -35,6 +35,7 @@ from langchain.prompts import SystemMessagePromptTemplate
 from langchain.chat_models.base import BaseChatModel
 from langchain.schema import BaseOutputParser
 from langchain.chains.base import Chain
+from huggingface_hub import hf_hub_download
 
 __import__('pysqlite3')
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
