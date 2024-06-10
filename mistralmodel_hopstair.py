@@ -101,7 +101,7 @@ def main():
     os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
     embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
     # load it into Chroma
-    vectorstore = Chroma.from_documents(docs, embeddings)
+    #vectorstore = Chroma.from_documents(docs, embeddings)
     # Configure and initialize components
     llm = configure_llama_model()    
 
