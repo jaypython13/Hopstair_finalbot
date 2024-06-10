@@ -84,9 +84,9 @@ def main():
     #st.sidebar.title("Hopstair's library data is Processing")
     loader = PyPDFLoader("data/Hopstair_data.pdf")
     documents = loader.load()
-    name =  st.chat_input("Hope you are well ! Please type your name to begin. ")
+    name =  st.text_input("Hope you are well ! Please type your name to begin. ")
     greet_user(name)
-    query = st.chat_input("Type your query here:")
+    query = st.text_input("Type your query here:")
 
     
     # Split the data into chunks
