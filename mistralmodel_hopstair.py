@@ -36,8 +36,8 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
 def greet_user(name):
-    st.write(f" Hello {name}!,we love having you.I am your AI Buddy.Remember, I am a motivational bot that helps break unconfident or negative thought patterns to help you regain your spark. We do not diagnose or treat mental health symptoms or conditions. We are all about confidence building and boosting.\
-    Type quit to exit")
+    st.write(f" Hello {name}! We love having you.I am your AI Buddy. Remember, I am a motivational bot that helps to break negative thought patterns to help you regain your spark. We do not diagnose or treat mental health symptoms or conditions. We are all about confidence building and boosting.\
+    Type "quit" to exit")
 
 def avoid_words(answer):
     # Define keywords that suggest consulting a professional
