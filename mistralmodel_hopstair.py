@@ -61,7 +61,28 @@ def avoid_words(answer):
 
 def get_answer(query):
   similar_docs = get_similar_docs(query)
-  llm = configure_llama_model()
+  (repo_id, model_file_name) = ("TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
+                                  "mistral-7b-instruct-v0.1.Q4_0.gguf")
+
+  model_path = hf_hub_download(repo_id=repo_id,
+                             filename=model_file_name,
+                            repo_type="model")
+
+  llm = LlamaCpp(
+          model_path=model_path,
+          temperature=0,
+          max_tokens=256,
+          top_p=1,
+          #callback_manager=callback_manager,
+          n_gpu_layers=1,
+          n_batch=256,
+          n_ctx=4098,
+          messages_to_prompt=messages_to_prompt,
+          completion_to_prompt=completion_to_prompt,
+          stop=["[INST]"],
+          verbose=True,
+          streaming=True,
+          )
     
   sys_tpl = "Your task is to respond by rephrasing the context in short with friendly greetings at the start of the response in 70 words, inspiring your friend to break negative thought patterns and embrace confidence.\
   You are a virtual cheerleader, spreading positivity and motivation to uplift your friend's spirits.\
@@ -93,7 +114,7 @@ def get_similar_docs(query,k=1,score=False):
         similar_docs = vectorstore.similarity_search(query,k=k)
     return similar_docs
     
-def configure_llama_model():
+#def configure_llama_model():
     (repo_id, model_file_name) = ("TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
                                   "mistral-7b-instruct-v0.1.Q4_0.gguf")
 
@@ -116,7 +137,7 @@ def configure_llama_model():
           verbose=True,
           streaming=True,
           )
-    return llm
+    #return llm
     #model_url = 'https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q4_K_M.gguf'
     #llm = LlamaCPP(
      #   model_url=model_url,
