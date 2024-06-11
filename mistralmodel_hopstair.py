@@ -138,7 +138,7 @@ def main():
     name =  st.text_input("Hope you are well ! Please type your name to begin. ")
     if name:
         greet_user(name)
-    query = st.text_input("Type your query here:")
+    query = st.chat_input("Type your query here:")
     response = get_answer(query)
     if query == "quit":
         st.write("Goodbye! Have a great day! Take care, my dear friend. Wishing you all the happiness and success in the world 💪")
