@@ -61,7 +61,7 @@ def avoid_words(answer):
             return False
 
     return True
-
+@st.cache    
 def get_answer(query):
   similar_docs = get_similar_docs(query)
   (repo_id, model_file_name) = ("TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
@@ -159,7 +159,7 @@ def main():
         #query_engine = index.as_query_engine() 
         #response = query_engine.query(user_input) 
         #t = st.text_area("AI Response:", response, height=100)   
-@st.cache            
+        
 if __name__ == "__main__":
     main()
 
