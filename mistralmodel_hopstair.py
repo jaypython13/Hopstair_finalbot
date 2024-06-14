@@ -46,6 +46,16 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
+def initialize_session_state():
+    if 'history' not in st.session_state:
+        st.session_state['history'] = []
+
+    if 'generated' not in st.session_state:
+        st.session_state['generated'] = ["Hello! Share your story here 🤗"]
+
+    if 'past' not in st.session_state:
+        st.session_state['past'] = ["Hey! 👋"]
+
 def greet_user(name):
     st.write(f"Hello {name}! We love having you.I am your AI Buddy. Remember, I am a motivational bot that helps to break negative thought patterns to help you regain your spark. We do not diagnose or treat mental health symptoms or conditions. We are all about confidence building and boosting.\
     Type quit to exit")
@@ -133,11 +143,12 @@ def get_similar_docs(query,k=1,score=False):
 def main():
     st.image('hs-logo.png', width = 200)
     st.title("AI Buddy- Your Confidence Catalyst")
-       
+    
     #st.sidebar.title("Hopstair's library data is Processing")
     name =  st.text_input("Hope you are well ! Please type your name to begin. ")
     if name:
         greet_user(name)
+    initialize_session_state()    
     query = st.text_input("Type your query here:")
     response = get_answer(query)
     if query == "quit":
