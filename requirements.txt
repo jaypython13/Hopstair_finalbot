@@ -12,3 +12,4 @@ langchain-core==0.1.22
 chromadb==0.4.22
 huggingface-hub==0.20.3
 pysqlite3-binary==0.5.2
+
