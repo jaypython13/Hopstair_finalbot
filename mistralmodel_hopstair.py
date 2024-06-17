@@ -8,7 +8,7 @@
 #!pip install unstructured[local-inference] -q
 # !pip install -U langchain-community
 
-from langchain.document_loaders import DirectoryLoader
+#from langchain.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains.question_answering import load_qa_chain
 from langchain.vectorstores import Chroma
