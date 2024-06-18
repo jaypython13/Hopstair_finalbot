@@ -144,7 +144,7 @@ def get_similar_docs(query,k=1,score=False):
 def main():
     st.image('hs-logo.png', width = 200)
     st.title("AI Buddy- Your Confidence Catalyst")
-    
+    initialize_session_state()
     #st.sidebar.title("Hopstair's library data is Processing")
     name =  st.text_input("Hope you are well ! Please type your name to begin. ")
     if name:
