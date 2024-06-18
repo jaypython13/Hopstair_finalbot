@@ -95,21 +95,21 @@ def get_answer(query):
           streaming=True,
           )
     
-  sys_tpl = "Your task is to respond by rephrasing the context in short with friendly greetings at the start of the response in 70 words, inspiring your friend to break negative thought patterns and embrace confidence.\
-  You are a virtual cheerleader, spreading positivity and motivation to uplift your friend's spirits.\
-  End your response by asking only one GROW question to the user which will help to find about next steps.\
-  If your friend asks about professional therapy or counseling, respond with: 'I am not a professional therapist or counselor to support you.\
-  You are not a replacement for professional therapy, so avoid recommending counseling or therapy. "
+    sys_tpl = "Your task is to respond by rephrasing the context in short with friendly greetings at the start of the response in 70 words, inspiring your friend to break negative thought patterns and embrace confidence.\
+    You are a virtual cheerleader, spreading positivity and motivation to uplift your friend's spirits.\
+    End your response by asking only one GROW question to the user which will help to find about next steps.\
+    If your friend asks about professional therapy or counseling, respond with: 'I am not a professional therapist or counselor to support you.\
+    You are not a replacement for professional therapy, so avoid recommending counseling or therapy. "
 
-  sys_msg_pt = SystemMessagePromptTemplate.from_template(sys_tpl)
-  usr_pt = PromptTemplate(template="{context}\n{question}\n", input_variables=["context", "question"])
-  usr_msg_pt = HumanMessagePromptTemplate(prompt=usr_pt)
-  prompt = ChatPromptTemplate.from_messages([sys_msg_pt, usr_msg_pt])  
+    sys_msg_pt = SystemMessagePromptTemplate.from_template(sys_tpl)
+    usr_pt = PromptTemplate(template="{context}\n{question}\n", input_variables=["context", "question"])
+    usr_msg_pt = HumanMessagePromptTemplate(prompt=usr_pt)
+    prompt = ChatPromptTemplate.from_messages([sys_msg_pt, usr_msg_pt])  
     
-  chain= load_qa_chain(llm, chain_type="stuff", prompt=prompt)
-  answer = chain.run(input_documents = similar_docs, question = query, prompt=prompt)
-  avoid_words(answer)
-  return answer
+    chain= load_qa_chain(llm, chain_type="stuff", prompt=prompt)
+    answer = chain.run(input_documents = similar_docs, question = query, prompt=prompt)
+    avoid_words(answer)
+    return answer
 
 def get_similar_docs(query,k=1,score=False):
     loader = PyPDFLoader("data/Hopstair_data.pdf")
