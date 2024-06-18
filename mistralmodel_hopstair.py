@@ -140,7 +140,7 @@ def get_similar_docs(query,k=1,score=False):
         #completion_to_prompt=completion_to_prompt,
         #verbose=True,
     #)
-   
+@st.cache.resources   
 def main():
     st.image('hs-logo.png', width = 200)
     st.title("AI Buddy- Your Confidence Catalyst")
@@ -171,7 +171,7 @@ def main():
         #query_engine = index.as_query_engine() 
         #response = query_engine.query(user_input) 
         #t = st.text_area("AI Response:", response, height=100)   
-@st.cache          
+         
 if __name__ == "__main__":
     main()
 
