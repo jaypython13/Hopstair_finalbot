@@ -72,7 +72,7 @@ def avoid_words(answer):
 
     return True
     
-  
+@st.cache_resource  
 def get_answer(query):
   similar_docs = get_similar_docs(query)
   (repo_id, model_file_name) = ("TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
@@ -140,7 +140,7 @@ def get_similar_docs(query,k=1,score=False):
         #completion_to_prompt=completion_to_prompt,
         #verbose=True,
     #)
-@st.cache
+
 def main():
     st.image('hs-logo.png', width = 200)
     st.title("AI Buddy- Your Confidence Catalyst")
