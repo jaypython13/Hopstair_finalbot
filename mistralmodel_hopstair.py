@@ -140,7 +140,7 @@ def get_similar_docs(query,k=1,score=False):
         #completion_to_prompt=completion_to_prompt,
         #verbose=True,
     #)
-@st.cache_resource
+@st.cache
 def main():
     st.image('hs-logo.png', width = 200)
     st.title("AI Buddy- Your Confidence Catalyst")
