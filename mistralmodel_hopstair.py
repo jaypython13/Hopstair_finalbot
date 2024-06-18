@@ -72,7 +72,7 @@ def avoid_words(answer):
 
     return True
     
-@st.cache_resource  
+@st.cache
 def get_answer(query):
   similar_docs = get_similar_docs(query)
   (repo_id, model_file_name) = ("TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
