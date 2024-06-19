@@ -15,7 +15,7 @@ def extract_text_from_pdf(pdf_path):
     return text
 
 # Extracted dataset from PDF
-dataset_text = extract_text_from_pdf('custom_dataset.pdf')
+dataset_text = extract_text_from_pdf('data/Hopstair_data.pdf')
 
 def generate_nudge(user_story, dataset_text):
     prompt = f"User story: {user_story}\n\nBased on this story and the following dataset, provide an encouraging and personalized nudge to boost the user's confidence.\n\nDataset: {dataset_text}\n\nNudge:"
