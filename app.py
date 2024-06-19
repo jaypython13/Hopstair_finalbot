@@ -1,5 +1,6 @@
 import streamlit as st
 import openai
+import os
 from llama_index.llms.openai import OpenAI
 try:
   from llama_index import VectorStoreIndex, ServiceContext, Document, SimpleDirectoryReader
