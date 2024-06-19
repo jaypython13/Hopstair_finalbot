@@ -160,10 +160,10 @@ def main():
         initialize_session_state()    
         query = st.text_input("Type your query here:")
         response = get_answer(query)
-    if query == "quit":
-        st.write("Goodbye! Have a great day! Take care, my dear friend. Wishing you all the happiness and success in the world 💪")
-    else:
-        st.text_area(response, height =100)
+        if query == "quit":
+            st.write("Goodbye! Have a great day! Take care, my dear friend. Wishing you all the happiness and success in the world 💪")
+        else:
+            st.text_area(response, height =100)
     
 
     
