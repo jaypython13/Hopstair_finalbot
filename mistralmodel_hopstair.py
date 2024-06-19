@@ -81,6 +81,8 @@ def avoid_words(answer):
 
 def get_answer(query):
     similar_docs = get_similar_docs(query)
+    model_name = "gpt-3.5-turbo"
+    llm = OpenAI(model_name=model_name)
     #(repo_id, model_file_name) = ("TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
                                   #"mistral-7b-instruct-v0.1.Q4_0.gguf")
 
@@ -149,8 +151,7 @@ def get_similar_docs(query,k=1,score=False):
 def main():
     st.image('hs-logo.png', width = 200)
     st.title("AI Buddy- Your Confidence Catalyst")
-    model_name = "gpt-3.5-turbo"
-    llm = OpenAI(model_name=model_name)
+    
     #st.sidebar.title("Hopstair's library data is Processing")
     name =  st.text_input("Hope you are well ! Please type your name to begin. ")
     if name:
