@@ -7,7 +7,8 @@
 #!pip install unstructured -q
 #!pip install unstructured[local-inference] -q
 # !pip install -U langchain-community
-
+import asyncio
+from openai import AsyncOpenAI
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import OpenAI
 #from langchain_community.chat_models import ChatOpenAI
@@ -82,7 +83,7 @@ def avoid_words(answer):
 def get_answer(query):
     similar_docs = get_similar_docs(query)
     model_name = "gpt-3.5-turbo"
-    llm = OpenAI(model_name=model_name)
+    llm = AsyncOpenAI(model_name=model_name)
     #(repo_id, model_file_name) = ("TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
                                   #"mistral-7b-instruct-v0.1.Q4_0.gguf")
 
