@@ -10,7 +10,7 @@
 
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import OpenAI
-
+from langchain_community.chat_models import ChatOpenAI
 from langchain.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains.question_answering import load_qa_chain
