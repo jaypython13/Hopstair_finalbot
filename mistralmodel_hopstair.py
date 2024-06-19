@@ -38,6 +38,8 @@ from langchain.chains.base import Chain
 from huggingface_hub import hf_hub_download
 from langchain.llms import LlamaCpp
 
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+
 
 __import__('pysqlite3')
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
@@ -75,7 +77,10 @@ def avoid_words(answer):
 @st.cache(ttl=24*3600)
 def get_answer(query):
     similar_docs = get_similar_docs(query)
-    (repo_id, model_file_name) = ("TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
+    model_name = "gpt-3.5-turbo"
+    llm = OpenAI(model_name=model_name)
+    
+    '''(repo_id, model_file_name) = ("TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
                                   "mistral-7b-instruct-v0.1.Q4_0.gguf")
 
     model_path = hf_hub_download(repo_id=repo_id, filename=model_file_name, repo_type="model")
@@ -93,7 +98,7 @@ def get_answer(query):
           stop=["[INST]"],
           verbose=True,
           streaming=True,
-          )
+          )'''
     
     sys_tpl = "Your task is to respond by rephrasing the context in short with friendly greetings at the start of the response in 70 words, inspiring your friend to break negative thought patterns and embrace confidence.\
     You are a virtual cheerleader, spreading positivity and motivation to uplift your friend's spirits.\
