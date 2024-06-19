@@ -113,7 +113,14 @@ def get_answer(query):
     usr_pt = PromptTemplate(template="{context}\n{question}\n", input_variables=["context", "question"])
     usr_msg_pt = HumanMessagePromptTemplate(prompt=usr_pt)
     prompt = ChatPromptTemplate.from_messages([sys_msg_pt, usr_msg_pt])  
-    
+    openai.Completion.create(
+        engine="gpt-3.5-turbo",
+        prompt=prompt,
+        max_tokens=150,
+        n=1,
+        stop=None,
+        temperature=0.7,
+    )
     chain= load_qa_chain(llm, chain_type="stuff", prompt=prompt)
     answer = chain.run(input_documents = similar_docs, question = query, prompt=prompt)
     avoid_words(answer)
@@ -153,11 +160,11 @@ def main():
     st.title("AI Buddy- Your Confidence Catalyst")
     
     #st.sidebar.title("Hopstair's library data is Processing")
-    name =  st.text_input("Hope you are well ! Please type your name to begin. ")
+    name =  st.text_input("# Hi buddy ! Hope you are well ! Please type your name to begin. ")
     if name:
         greet_user(name)
         initialize_session_state()    
-        query = st.text_input("Type your query here:")
+        query = st.text_input("Type your story here:")
         response = get_answer(query)
         if query == "quit":
             st.write("Goodbye! Have a great day! Take care, my dear friend. Wishing you all the happiness and success in the world 💪")
