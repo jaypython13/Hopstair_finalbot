@@ -153,7 +153,7 @@ def main():
     st.title("AI Buddy- Your Confidence Catalyst")
     
     #st.sidebar.title("Hopstair's library data is Processing")
-    name =  st.text_input("### Hi buddy ! Hope you are well ! Please type your name to begin. ")
+    name =  st.text_input("Hi buddy ! Hope you are well ! Please type your name to begin. ")
     if name:
         greet_user(name)
         initialize_session_state()    
