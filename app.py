@@ -2,7 +2,7 @@ import PyPDF2
 import openai
 import streamlit as st
 import os
-
+from langchain.document_loaders import PyPDFLoader
 # Set your OpenAI API key
 #openai.api_key = 'your-api-key-here'
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
