@@ -7,13 +7,9 @@ from langchain.document_loaders import PyPDFLoader
 #openai.api_key = 'your-api-key-here'
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 def extract_text_from_pdf(pdf_path):
-    pdf_reader = PyPDF2.PdfFileReader(open(pdf_path, 'rb'))
-    text = ""
-    for page_num in range(pdf_reader.numPages):
-        page = pdf_reader.getPage(page_num)
-        text += page.extract_text()
+    loader = PyPDFLoader("data/Hopstair_data.pdf")
+    text = loader.load()
     return text
-
 # Extracted dataset from PDF
 dataset_text = extract_text_from_pdf('data/Hopstair_data.pdf')
 
