@@ -152,14 +152,14 @@ def get_similar_docs(query,k=1,score=False):
 def main():
     st.image('hs-logo.png', width = 200)
     st.title("AI Buddy- Your Confidence Catalyst")
-    initialize_session_state()
+    
     #st.sidebar.title("Hopstair's library data is Processing")
     name =  st.text_input("Hope you are well ! Please type your name to begin. ")
     if name:
         greet_user(name)
-    initialize_session_state()    
-    query = st.text_input("Type your query here:")
-    response = get_answer(query)
+        initialize_session_state()    
+        query = st.text_input("Type your query here:")
+        response = get_answer(query)
     if query == "quit":
         st.write("Goodbye! Have a great day! Take care, my dear friend. Wishing you all the happiness and success in the world 💪")
     else:
