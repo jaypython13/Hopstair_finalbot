@@ -78,7 +78,7 @@ def avoid_words(answer):
 
     return True
     
-
+@st.cache
 def get_answer(query):
     similar_docs = get_similar_docs(query)
     model_name = "gpt-3.5-turbo"
