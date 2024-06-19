@@ -16,3 +16,4 @@ openai
 PyPDF2==3.0.1
 llama-index-llms-openai
 nltk
+llama_index.core
