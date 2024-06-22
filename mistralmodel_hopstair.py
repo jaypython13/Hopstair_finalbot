@@ -7,6 +7,7 @@
 #!pip install unstructured -q
 #!pip install unstructured[local-inference] -q
 # !pip install -U langchain-community
+from langchain.chat_models import ChatOpenAI
 import asyncio
 from openai import AsyncOpenAI
 from langchain.embeddings.openai import OpenAIEmbeddings
