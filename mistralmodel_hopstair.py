@@ -45,7 +45,7 @@ from langchain.chains.base import Chain
 from huggingface_hub import hf_hub_download
 from langchain.llms import LlamaCpp
 
-os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+#os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 
 __import__('pysqlite3')
