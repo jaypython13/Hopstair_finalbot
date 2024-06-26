@@ -20,4 +20,4 @@ nltk==3.8.1
 #llama_index.core
 textblob==0.17.1
 llama_index.core.llms
-llama-index-core==0.10.50.post1
+llama-index-core==0.10.50
