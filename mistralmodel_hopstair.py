@@ -9,6 +9,7 @@
 # !pip install -U langchain-community
 from langchain.chat_models import ChatOpenAI
 import asyncio
+from textblob import TextBlob
 from openai import AsyncOpenAI
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import OpenAI
@@ -161,6 +162,7 @@ def main():
         initialize_session_state()    
         query = st.text_input("Type your story here:")
         response = get_answer(query)
+        st.text_area(response, height =100)
         if query == "quit":
             st.write("Goodbye! Have a great day! Take care, my dear friend. Wishing you all the happiness and success in the world 💪")
         else:
