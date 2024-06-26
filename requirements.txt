@@ -18,3 +18,4 @@ llama-index-llms-openai
 nltk==3.8.1
 llama_index.core
 textblob==0.17.1
+llama_index.core.llms
